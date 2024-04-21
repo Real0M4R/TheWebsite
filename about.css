@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+body {
+    background-color: #1A253A;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+    font-family: Montserrat;
+}
+
+.header-main {
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+    display: flex;
+    position: sticky;
+    top: 0;
+}
+
+.header-main-logo {
+    width: fit-content;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.header-main-logo img {
+    height: 60px;
+    padding-left: 10px;
+}
+
+.header-main-nav {
+    width: fit-content;
+    height: 100%;
+    background-color: #fff;
+}
+
+a{
+cursor: pointer;
+}
+
+.header-main-sm {
+    width: 120px;
+    height: 100%;
+}
+.header-main-nav ul {
+    list-style: none;
+}
+.header-main-nav ul li{
+    display: inline;
+    float: left;
+    color: #24252A;
+    text-decoration: none;
+}
+.header-main-nav ul li a{
+    padding: 0 10px;
+    font-family: "Montserrat" , sans-serif;
+    line-height: 28px;
+    font-weight: 300;
+    color: black;
+    text-decoration: none;
+}
+.header-main-nav ul li a:hover{
+    color: orange;
+    transition: all;
+    transition-duration: 500ms;
+}
+.index-about {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-top: 160px;
+}
+.index-about img {
+    margin-right: 30px;
+    border-radius: 300px;
+}
+.index-about-text {
+    color: #fff;
+    line-height: 30px;
+}
+.index-about-text a {
+    background-color: orange;
+    color: #fff;
+    padding: 4px;
+    border-radius: 3px;
+    text-decoration: none;
+    font-size: 15px;
+}
+.index-about-text a:hover {
+    font-size: 20px;
+    transition: all;
+    transition-duration: 500ms;
+}
+.index-about-skill {
+    color: #fff;
+    margin-left: 25px;
+    flex-basis: 350px;
+    border-radius: 2px;
+}
+.index-about-skill-bar {
+    width: calc(100% - 8px);
+    height: 16px;
+    border: solid 4px #0B0F16;
+    border-radius: 3px;
+}
+.index-about-skill-bar-fill {
+    width: 100%;
+    height: 100%;
+    background-color: orange;
+}
+.htmlcss {
+    width: 85%;
+}
+.ps {
+    width: 60%;
+}
+.python {
+    width: 40%;
+}
+.gaming {
+    width: 95%;
+}
+.trading {
+    width: 70%;
+}
+.index-about-skill-bar:hover {
+    height: 25px;
+    width: 100%;
+    transition: all;
+    transition-duration: 300ms;
+}
+
+
+

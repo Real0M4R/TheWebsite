@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link rel="icon" href="logo.png" type="image/x-icon" style="border-radius: 20px;">
+
+    <style>
+        
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+        *{
+            font-family: "Montserrat", sans-serif;
+        }
+        body{
+            background: url(photo-1470071459604-3b5ec3a7fe05.avif);
+            margin: 0;
+            background-position: center;
+        }
+        
+       
+.container {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px;
+    border-radius: 20px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    margin: 150px;
+    background-color: rgba(154, 154, 154, 0.397);
+    background-size: fit-content;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.search-container {
+    margin-top: 20px;
+}
+
+input {
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 55%;
+    height: fit-content;
+}
+input:hover {
+    font-size: larger;
+    transition-duration: 500ms;
+    transition: all;
+}
+button {
+    padding: 10px 20px;
+    background-color: orange;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover {
+    font-size: larger;
+    transition-duration: 500ms;
+    transition: all;
+}
+#weatherInfo {
+    margin-top: 20px;
+}
+.container .nyeahh{
+    display: flex;
+    align-self: center;
+}
+
+header {
+        width: 100%;
+        height: 60px;
+        background-color: #fff;
+        display: flex;
+        position: fixed;
+        display: flex;
+        top: 0;
+        z-index: 2;
+        overflow: hidden;
+        padding: 0;
+        justify-content: top;
+    }
+
+   .header-main-logo {
+        width: fit-content;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin-left: 11px;
+   }
+   .header-main-logo img {
+        height: 60px;
+        left: -1px;
+        position: relative;
+   }
+   
+   .header-main-nav {
+        width: fit-content;
+        height: 100%;
+        background-color: #fff;
+   }
+
+   a{
+    cursor: pointer;
+   }
+
+   .header-main-sm {
+        width: 120px;
+        height: 100%;
+   }
+   .header-main-nav ul {
+        list-style: none;
+   }
+   .header-main-nav ul li{
+        display: inline;
+        float: left;
+        color: #24252A;
+        text-decoration: none;
+   }
+   .header-main-nav ul li a{
+        padding: 0 10px;
+        font-family: "Montserrat" , sans-serif;
+        line-height: 30px;
+        font-weight: 300;
+        color: black;
+        text-decoration: none;
+   }
+   .header-main-nav ul li a:hover{
+    color: orange;
+    transition: all;
+    transition-duration: 500ms;
+   }
+   .info {
+    font-size: 30px;
+   }
+   
+
+
+    
+    
+
+
+
+    </style>
+    
+</head>
+<body>
+    
+   
+
+    <div class="container">
+        <h1>Weather</h1>
+        <div class="search-container">
+            <input type="text" id="locationInput" placeholder="Enter location">
+            <button id="searchButton">Search</button>
+        </div>
+    <div class="info">
+        <div id="weatherInfo"></div>
+        <div class="windSpeed"></div>
+        <div class="humidity"></div>
+    </div>
+    </div>
+
+    <header class="header-main">
+        <div class="header-main-logo">
+            <img src="ipiccy_image.jpg" alt="navlogo">
+            <nav class="header-main-nav">
+                <ul>
+                    <li><a href="index.html">HOME</a></li> 
+                    <li><a href="Weather.html">WEATHER</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    const searchButton = document.getElementById("searchButton");
+    const locationInput = document.getElementById("locationInput");
+    const weatherInfo = document.getElementById("weatherInfo");
+    const windSpeedElement = document.getElementById("windSpeed");
+    const humidityElement = document.getElementById("humidity");
+    
+
+    searchButton.addEventListener("click", function () {
+        const location = locationInput.value.trim();
+
+        if (location === "") {
+            alert("Please enter a location.");
+            return;
+        }
+
+        const apiKey = "aae130b3867d06131c66feb536733dce"; 
+        const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}`;
+
+        fetch(apiUrl)
+            .then((response) => response.json())
+            .then((data) => {
+                const temperature = Math.round(data.main.temp - 273.15);
+                const description = data.weather[0].description;
+                const windSpeed = data.wind.speed;
+                const humidity = data.main.humidity;
+
+
+                const weatherHTML = `
+                    <p>Location: ${data.name}, ${data.sys.country}</p>
+                    <p>Temperature: ${temperature}°C</p>
+                    <p>Description: ${description}</p>
+                    <p>Wind: ${windSpeed} m/s</p>
+                  <p>Humidity: ${humidity}%;
+                `;
+
+                weatherInfo.innerHTML = weatherHTML;
+            })
+            .catch((error) => {
+                console.error("Error fetching weather data:", error);
+                weatherInfo.innerHTML = "Failed to fetch weather data.";
+            });
+    });
+});
+
+    </script>
+</body>
+                            <!--HTML,CSS,JS, BY ZDRIFTERGT!-->
+</html>
